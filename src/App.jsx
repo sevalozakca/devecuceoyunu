@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import './style.css';
 
-const degiskenler = ["deve", "cuce"];
+const degiskenler = ["DEVE", "CÜCE"];
 
 function App() {
   // rastgele seç
@@ -17,7 +18,9 @@ function App() {
 
       setTimeout(() => {
         setRandomDegisken("");
-      }, 1880);
+      }, 1800);
+      setButonDurum(true);
+      
     }, 2000);
     return () => clearInterval(interval);
   }, []);
@@ -26,24 +29,36 @@ function App() {
 
   const [puan, setPuan] = useState(0);
 
+  // butona 2sn içinde sadece 1 kez tıklanabilsin.
+  const [butonEtkin, setButonDurum]=useState(true);
+
   const handleButtonClick = (clickedWord) => {
+
+    // eğer buton etkin değilse döngüden çık.
+    if(!butonEtkin) return;
+    
+
     if (clickedWord === randomDegisken) {
       setPuan((oncekiPuan) => oncekiPuan + 1);
     } else {
       setPuan((oncekiPuan) => Math.max(0, oncekiPuan - 1));
     }
+
+    // butonları deaktifleştir
+    setButonDurum(false);
+
   };
 
   return (
     <div>
-      <p>{randomDegisken}</p>
+    <p className={"random kaisei-decol-regular"}>{randomDegisken ? randomDegisken : <span>🔄</span>}</p>
       <div className="container">
         <div className="row">
           <div className="col">
             <button
               type="button"
-              onClick={() => handleButtonClick("deve")}
-              className="btn btn-primary"
+              onClick={() => handleButtonClick("DEVE")}
+              className={"btn deve kaisei-decol-regular"} disabled={!butonEtkin}
             >
               Deve
             </button>
@@ -51,15 +66,15 @@ function App() {
           <div className="col">
             <button
               type="button"
-              onClick={() => handleButtonClick("cuce")}
-              className="btn btn-secondary"
+              onClick={() => handleButtonClick("CÜCE")}
+              className={"btn cuce kaisei-decol-regular"} disabled={!butonEtkin}
             >
               Cüce
             </button>
           </div>
         </div>
       </div>
-      <p>Puan: {puan}</p>
+      <p className={"puan kaisei-decol-regular"}>Puan: {puan}</p>
     </div>
   );
 }

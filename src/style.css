@@ -1,0 +1,43 @@
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .col {
+    margin: 50px 0;
+  }
+  
+  p {
+    text-align: center;
+  }
+
+  .random{
+    margin: 0 auto;
+    margin-top: 220px;
+  }
+
+  .puan {
+    text-align: center;
+    margin-top: auto;
+  }
+
+  .deve{
+     background-color: rgb(167, 165, 198);
+     color: #ffffff;
+  }
+
+  .cuce{
+    background-color: rgb(135, 151, 178);
+    color: #ffffff;
+  }
+
+
+  
+
+
+  
+
