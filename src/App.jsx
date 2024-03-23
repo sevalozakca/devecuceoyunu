@@ -4,25 +4,40 @@ import "./style.css";
 
 const degiskenler = ["DEVE", "CÜCE"];
 
+ // kod kalabalıklığı önlemek için;
+let RandomSec=()=>{
+let secilen= degiskenler[Math.floor(Math.random() * degiskenler.length)];
+return secilen;
+ };
+
 function App() {
-  // rastgele seç
+  // randomDegisken = rastgele bir kelime seç
   const [randomDegisken, setRandomDegisken] = useState(
-    degiskenler[Math.floor(Math.random() * degiskenler.length)]
+    // degiskenler[Math.floor(Math.random() * degiskenler.length)]
+    RandomSec()
   );
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const yeniDegisken =
-        degiskenler[Math.floor(Math.random() * degiskenler.length)];
-      setRandomDegisken(yeniDegisken);
+  const interval = setInterval(() => {
+    // 
+    const yeniDegisken = RandomSec();
+    setRandomDegisken(yeniDegisken);
+    setButonDurum(true);
+  }, 2800); // her 2.8 sn de bir butonları aktifleştir,  yeni rastgele kelime oluştur ve ekrana yansıt
 
-      setTimeout(() => {
-        setRandomDegisken("");
-      }, 1800);
-      setButonDurum(true);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
+  return () => clearInterval(interval);
+}, []); // useEffect sadece bir kez çalışacak, boş bağımlılık dizisi
+
+// randomDegisken değiştiğinde çalışacak useEffect
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    setRandomDegisken("");
+  }, 2000); // her iki saniyede bir kelimeyi temizler
+
+  return () => clearTimeout(timeout);
+}, [randomDegisken]);
+
+  
 
   // buton tıkla ve puan hesapla
 
