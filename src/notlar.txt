@@ -1,7 +1,7 @@
 Ekranda 2 sn'de bir deve veya cüce yazısı belirecek
 Altında 2 adet deve cüce yazan buton olacak
 Deve veya cüce yazısı ekrana geldiği andan 2sn içerisine kadar kullanıcının doğru butona basması gerekecek.
-    ----- kullanıcı butona 1'den fazla bassa da puanda değişiklik olmamması gerekecek ==> bunun için buton tıklanmaz yani disabled hale gelebiliri.
+    ----- kullanıcı butona 1'den fazla bassa da puanda değişiklik olmamması gerekecek ==> bunun için buton tıklanmaz yani disabled hale gelebilir.
 Kullanıcı doğru butona bastığı takdirde puanı 1 artacak, yanlış butona basılıldığında puanı 1 azalacak
 
 
@@ -11,4 +11,4 @@ button click olduğunda yapılacak işlemler -----> buton ile ekrandaki kelime e
 puan artış azalış -----> useState 
 
 
-yazının random değişmesi denendi ----->  
+yazının random değişmesi denendi -----> bir diğer kelime geçişi belli olmadığı için, araya birşey konabilir birkaç saniyelik
